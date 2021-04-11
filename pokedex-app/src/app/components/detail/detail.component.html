@@ -1,0 +1,39 @@
+<div class="card" style="width: 90%">
+  <div class="card-header">
+    <h3>{{pokemon.name | titlecase }}</h3>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div style="padding:8px; text-align: center;">
+        <img src="{{imageUrl}}" class="rounded img-fluid" alt="{{pokemon.name}}" width="200">
+      </div>
+    </div>
+    <div class="col" >
+        <div style="padding:8px;">
+          <div><b>Peso: </b>{{pokemon.weight}}</div>
+          <div><b>Habilidades: </b></div>
+          <div>
+            <ul>
+              <li *ngFor="let ability of pokemon.abilities" style="padding-left: 0;">{{ability.name}}</li>
+            </ul>
+          </div>
+          <div><b>Tipos: </b></div>
+          <div>
+            <ul>
+              <li *ngFor="let type of pokemon.types" style="padding-left: 0;">{{type.name}}</li>
+            </ul>
+          </div>
+          <div><b>Evoluciones: </b></div>
+          <div>
+            <ul>
+              <li *ngFor="let species of pokemon.evolutions" style="padding-left: 0;">{{species.name}}</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="card-body" style="text-align: center;">
+      <button (click)="back()" type="button" class="btn btn-primary">Volver</button>
+  </div>
+</div>
