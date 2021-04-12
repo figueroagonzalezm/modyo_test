@@ -20,6 +20,13 @@ public class PokemonInfo {
 		this.evolutions = new ArrayList<>();
 	}
 
+	
+	public PokemonInfo(Integer id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

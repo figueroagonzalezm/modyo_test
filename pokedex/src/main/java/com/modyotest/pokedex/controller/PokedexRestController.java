@@ -1,9 +1,15 @@
 package com.modyotest.pokedex.controller;
 
+import java.lang.reflect.UndeclaredThrowableException;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,15 +29,30 @@ public class PokedexRestController {
 	private IPokedexService pokedexService;
     
 	@GetMapping("/pokemons/page/{page}")
-	public Page<PokemonInfo> getPokemons(@PathVariable int page) {
+	public ResponseEntity<?> getPokemons(@PathVariable int page) {
 		logger.info("Executing method: getPokemons");
-		return pokedexService.findAll(PageRequest.of(page, LINES_PER_PAGE));
+		Map<String, Object> response = new HashMap<>();		
+		 Page<PokemonInfo> resultPage = pokedexService.findAll(PageRequest.of(page, LINES_PER_PAGE));
+		 if(page > resultPage.getTotalPages()) {
+				response.put("message", "Error en la petición");
+				response.put("error", "El recurso solicitado no existe");
+				return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);			 
+		 }
+		 return new ResponseEntity<>(resultPage, HttpStatus.OK);
 	}
 	
 	@GetMapping("/pokemons/{id}")
-	public PokemonInfo getPokemon(@PathVariable int id) {
-		//TODO: check the accurate type of object to return in this method maybe ResponseEnty<?>
+	public ResponseEntity<?> getPokemon(@PathVariable int id) {
 		logger.info("Executing method: getPokemons");
-		return pokedexService.findById(id);
+		Map<String, Object> response = new HashMap<>();
+		PokemonInfo pokemoninfo;
+		try {
+			pokemoninfo = pokedexService.findById(id);
+		} catch (UndeclaredThrowableException e) {
+			response.put("message", "Error procesando la solicitud");
+			response.put("error", "El recurso solicitado no existe");
+			return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(pokemoninfo, HttpStatus.OK); 
 	}
 }
