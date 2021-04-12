@@ -7,7 +7,7 @@ import { Pokemon } from '../models/pokemon';
   providedIn: 'root'
 })
 export class DetailService {
-  private urlEndPoint: string = "http://localhost:8080/api/pokemons";
+  private urlEndPoint: string = "https://pokedexapi-pokedexapi.azuremicroservices.io/api/pokemons";
   constructor(private http: HttpClient ) { }
 
   getPokemon(id:number): Observable<Pokemon>{

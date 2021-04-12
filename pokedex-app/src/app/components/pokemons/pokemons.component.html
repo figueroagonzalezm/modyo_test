@@ -1,4 +1,8 @@
-<div class="row row-cols-4">
+<div><h1>Pokemon World !!</h1></div>
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div class="row row-cols-4" >
   <div *ngFor="let pokemon of pokemons" class="card" style="width: 12rem; margin: 0.1rem;" >
     <img src="{{pokemon.imageUrl}}" class="card-img-top" alt="{{pokemon.name}}" >
     <div >
@@ -12,8 +16,15 @@
           <li *ngFor="let ability of pokemon.abilities" style="padding-left: 0;">{{ability.name}}</li>
         </ul>
       </div>
-    <div class="card-body">
-      <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/detail', pokemon.id]">Ver Detalle</button>
+      <div class="card-body">
+        <button type="button" class="btn btn-primary btn-sm" [routerLink]="['/detail', pokemon.id]">Ver Detalle</button>
+      </div>
     </div>
   </div>
+</div>
+<div *ngIf="loading" class="spinner-border text-primary" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+<div style="width: 100%;text-align: center; margin-top: 5px;">
+  <app-paginator *ngIf="paginator" [paginator] = "paginator"></app-paginator>
 </div>

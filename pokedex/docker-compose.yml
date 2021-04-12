@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  web:
+    build: .
+    image: pokedex
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=America/Bogota
+    restart: always

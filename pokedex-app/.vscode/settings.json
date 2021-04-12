@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/d5876f0a-787e-4235-b90f-970c79744704/resourceGroups/pokedexgroup/providers/Microsoft.Web/sites/pokedex-app",
+    "appService.deploySubpath": "dist\\pokedex-app"
+}

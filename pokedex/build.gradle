@@ -6,7 +6,7 @@ plugins {
 
 group = 'com.modyotest'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '8'
 
 repositories {
 	mavenCentral()
@@ -21,6 +21,7 @@ dependencies {
 	implementation 'me.sargunvohra.lib:pokekotlin:2.4.0'
 	testImplementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.30'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-cache', version: '2.4.1'
+	
 }
 
 test {

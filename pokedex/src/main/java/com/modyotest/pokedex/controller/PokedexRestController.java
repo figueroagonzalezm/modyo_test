@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.modyotest.pokedex.model.PokemonInfo;
 import com.modyotest.pokedex.service.IPokedexService;
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api")
 public class PokedexRestController {

@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { PokemonsComponent } from './components/pokemons/pokemons.component';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailComponent } from './components/detail/detail.component';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
     AppComponent,
     PokemonsComponent,
     DetailComponent,
+    PaginatorComponent,
 
   ],
   imports: [
